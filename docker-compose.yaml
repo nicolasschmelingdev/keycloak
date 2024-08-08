@@ -7,27 +7,12 @@ services:
     command: start-dev
     environment:
       KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://db:5432/keycloak_dev
-      KC_DB_USERNAME: keycloak
-      KC_DB_PASSWORD: postgres
+      KC_DB_URL: jdbc:postgresql://77.37.68.108:55432/keycloak_dev
+      KC_DB_USERNAME: admin
+      KC_DB_PASSWORD: admin
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_HOSTNAME: localhost
       KC_HOSTNAME_STRICT: 'false'
     ports:
       - "8180:8080"
-
-  db:
-    image: postgres:15-alpine
-    container_name: keycloak-db
-    environment:
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: keycloak_dev
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5433:5432"
-
-volumes:
-  postgres_data:
