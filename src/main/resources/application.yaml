@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: dev  # Altere para 'prod' no ambiente de produção
+
+# Configurações gerais
+server:
+  port: 8080
+
+keycloak:
+  auth-server-url: http://77.37.68.108:8180/auth
+  realm: myrealm
+  resource: myclient
+  credentials:
+    secret: myclient-secret
+  bearer-only: true
+  security-constraints:
+    - authRoles:
+        - user
+        - admin
+      securityCollections:
+        - name: secured-pages
+          patterns:
+            - /secured/*
+            - /admin/*
+  use-resource-role-mappings: true
